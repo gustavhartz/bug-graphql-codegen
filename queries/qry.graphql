@@ -1,0 +1,38 @@
+query teest423($id: Boolean!, $name: String!) {
+  GetInsights {
+    financialPotentialTo
+    financialPotentialFrom
+    typeId
+    insightData
+    insightUUID
+    insightCreatedAt
+    projectId
+  }
+  GetInsightTypeDescriptions {
+    text
+    title
+    typeId
+    typeName
+    insightDataType
+    shortDescription
+  }
+}
+query dsanjeaf($id: Boolean!, $name: String!) {
+  GetInsights {
+    financialPotentialTo
+    financialPotentialFrom
+    typeId
+    insightData
+    insightUUID
+    insightCreatedAt
+    projectId
+  }
+  GetInsightTypeDescriptions {
+    text
+    title
+    typeId
+    typeName
+    insightDataType
+    shortDescription
+  }
+}

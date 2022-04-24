@@ -1,0 +1,53 @@
+"""
+Date custom scalar type. This is a direct mapping to the date type in javascript
+"""
+scalar Date
+
+type User {
+  id: Int!
+  name: String
+  defaultProjectId: Int
+  defaultProjectName: String
+}
+
+type Project {
+  id: Int!
+  name: String!
+  description: String!
+}
+
+type Insight {
+  typeId: Int!
+  insightUUID: String!
+  insightCreatedAt: Date!
+  financialPotentialFrom: Float
+  financialPotentialTo: Float
+  projectId: Int!
+  insightData: String!
+}
+
+type InsightTypeDescription {
+  typeId: Int!
+  shortDescription: String!
+  insightDataType: String!
+  text: String!
+  typeName: String!
+  title: String!
+}
+
+type Query {
+  Me: User!
+  AllProjects: [Project!]
+  SingleProject(id: Int!): Project
+  GenerateQuickbooksAuthUri: String
+  IsProjectConnectedToQuickbooks: Boolean
+  GetInsights(typeId: Int, isIgnored: Boolean, isNotUseful: Boolean, isCompleted: Boolean): [Insight]
+  GetInsightTypeDescriptions(typeId: Int): [InsightTypeDescription]
+}
+
+type Mutation {
+  DisconnectQuickbooksFromProject: Boolean
+  AlterProject(id: Int!, description: String, name: String): Project
+  AddProjectUser(projectId: Int!, userEmail: String!): Boolean
+  AlterInsight(typeId: Int!, insightUUID: String!, isIgnored: Boolean, isNotUseful: Boolean, isCompleted: Boolean): Insight
+}
